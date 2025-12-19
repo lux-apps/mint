@@ -1,28 +1,26 @@
-import type { Metadata } from 'next'
+import React, { type PropsWithChildren } from 'react'
+import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
+const inter = Inter({ subsets: ['latin'] })
+
 export const metadata: Metadata = {
-  title: 'Lux Mint - NFT and Token Minting Platform',
-  description: 'Mint digital assets on the Lux Network. Create coins, tokens, NFTs, credit cards, and validator passes.',
-  keywords: ['Lux', 'Mint', 'NFT', 'Token', 'Blockchain', 'Minting', 'Digital Assets'],
-  authors: [{ name: 'Lux Partners Limited', url: 'https://lux.partners' }],
-  openGraph: {
-    title: 'Lux Mint',
-    description: 'NFT and Token Minting Platform on Lux Network',
-    url: 'https://mint.lux.network',
-    siteName: 'Lux Mint',
-    type: 'website',
-  },
+  title: "LUX Mint",
+  description: "Mint tokens, NFTs, and other digital assets on the Lux blockchain.",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
+
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen bg-black text-white antialiased">
+      <body className={`${inter.className} bg-black text-white min-h-screen`}>
         {children}
       </body>
     </html>
